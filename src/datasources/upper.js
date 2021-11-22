@@ -39,7 +39,7 @@ class ServerlessDatabase extends SQLDataSource {
   lowerReducer(results) {
     if (results.length > 0) {
       return {
-        ...results[0].video,
+        ...results[0].lower,
       };
     }
     return null;

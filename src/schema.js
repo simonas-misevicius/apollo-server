@@ -3,7 +3,8 @@ const typeDefs = gql`
   type Upper {
     id: ID!
     name: String
-    lowerkey: [Lower]
+    lowerkey: String
+    lowers: [Lower]
   }
   type Lower {
     id: ID!
