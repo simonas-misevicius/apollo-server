@@ -16,6 +16,14 @@ const typeDefs = gql`
     lowers: [Lower]!
     lower(id: ID!): Lower
   }
+  type Mutation {
+    addUpper(name: String!): UpperUpdateResponse!
+    removeUpper(id: ID!): UpperUpdateResponse!
+    editUpper(name: String!): UpperUpdateResponse!
+  }
+  type UpperUpdateResponse {
+    success: Boolean!
+  }
 `;
 
 module.exports = typeDefs;

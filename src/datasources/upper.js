@@ -25,6 +25,17 @@ class ServerlessDatabase extends SQLDataSource {
       });
   }
 
+  addUpper(name) {
+    return this.knex("upper")
+      .insert({ name: name })
+      .then((results) => {
+        return { success: true };
+      })
+      .catch((error) => {
+        return { success: false };
+      });
+  }
+
   upperReducer(result) {
     if (result.length > 0) {
       const lowers = result.map((res) => res.lower);
