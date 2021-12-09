@@ -7,7 +7,7 @@ class ServerlessDatabase extends SQLDataSource {
     return this.knex
       .select("*")
       .from("upper AS upper")
-      .leftJoin("lower AS lower", "upper.lowerkey", "lower.id")
+      .leftJoin("lower AS lower", "upper.id", "lower.upperkey")
       .where("upper.id", "=", id)
       .options({ nestTables: true })
       .then((results) => {
