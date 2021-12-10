@@ -17,12 +17,16 @@ const typeDefs = gql`
     lower(id: ID!): Lower
   }
   type Mutation {
-    addUpper(name: String!): UpperUpdateResponse!
-    removeUpper(id: ID!): UpperUpdateResponse!
-    editUpper(name: String!): UpperUpdateResponse!
+    addUpper(name: String!): MutationResponse!
+    removeUpper(id: ID!): MutationResponse!
+    editUpper(name: String!, id: ID!): MutationResponse!
+    addLower(name: String!, keyId: ID!): MutationResponse!
+    removeLower(id: ID!): MutationResponse!
+    editLower(name: String!, keyId: ID!, id: ID!): MutationResponse!
   }
-  type UpperUpdateResponse {
+  type MutationResponse {
     success: Boolean!
+    message: String
   }
 `;
 

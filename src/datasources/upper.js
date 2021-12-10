@@ -3,6 +3,9 @@ class ServerlessDatabase extends SQLDataSource {
   getUppers() {
     return this.knex.select("*").from("upper");
   }
+  getLowers() {
+    return this.knex.select("*").from("lower");
+  }
   getUpperById(id) {
     return this.knex
       .select("*")
@@ -28,6 +31,65 @@ class ServerlessDatabase extends SQLDataSource {
   addUpper(name) {
     return this.knex("upper")
       .insert({ name: name })
+      .then((results) => {
+        return { success: true };
+      })
+      .catch((error) => {
+        return { success: false };
+      });
+  }
+
+  removeUpper(id) {
+    return this.knex("upper")
+      .where("id", id)
+      .del()
+      .then((results) => {
+        return { success: true };
+      })
+      .catch((error) => {
+        return { success: false };
+      });
+  }
+
+  editUpper(name, id) {
+    return this.knex("upper")
+      .where("id", id)
+      .update({ name: name })
+      .then((results) => {
+        return { success: true };
+      })
+      .catch((error) => {
+        return { success: false };
+      });
+  }
+
+  addLower(name, keyId) {
+    return this.knex("lower")
+      .insert({ namel: name, upperkey: keyId })
+      .then((results) => {
+        return { success: true };
+      })
+      .catch((error) => {
+        return { success: false, message: error };
+      });
+  }
+
+  removeLower(id) {
+    return this.knex("lower")
+      .where("id", id)
+      .del()
+      .then((results) => {
+        return { success: true };
+      })
+      .catch((error) => {
+        return { success: false };
+      });
+  }
+
+  editLower(name, keyId, id) {
+    return this.knex("lower")
+      .where("id", id)
+      .update({ namel: name, upperkey: keyId })
       .then((results) => {
         return { success: true };
       })

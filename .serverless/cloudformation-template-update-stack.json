@@ -207,7 +207,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/apollo-lambda/dev/1638251623534-2021-11-30T05:53:43.534Z/apollo-lambda.zip"
+          "S3Key": "serverless/apollo-lambda/dev/1639140170342-2021-12-10T12:42:50.342Z/apollo-lambda.zip"
         },
         "Handler": "s_graphql.handler",
         "Runtime": "nodejs12.x",
@@ -225,14 +225,14 @@
         "GraphqlLogGroup"
       ]
     },
-    "GraphqlLambdaVersionRhK3cOvxDDZjG4O0BJ4vW43ubua0ZiUqaRn9GRKb1Ns": {
+    "GraphqlLambdaVersionFUM8SCcwqXS3B2yQXIO2P8XnGyxHrXN2ZYiRLQ8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GraphqlLambdaFunction"
         },
-        "CodeSha256": "Hw+q3t+m6JtbMnUxZAGdBuiB1WSkTttYA3i18soh4Uo="
+        "CodeSha256": "sb3ZusS0Ve8TjdCenKQf31rBxSGC0YszUQurPjFllRM="
       }
     },
     "ApiGatewayRestApi": {
@@ -399,7 +399,7 @@
         "GraphqlLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1638251607313": {
+    "ApiGatewayDeployment1639140150973": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -559,7 +559,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/apollo-lambda/dev/1638251623534-2021-11-30T05:53:43.534Z/custom-resources.zip"
+          "S3Key": "serverless/apollo-lambda/dev/1639140170342-2021-12-10T12:42:50.342Z/custom-resources.zip"
         },
         "FunctionName": "apollo-lambda-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -621,7 +621,7 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersionRhK3cOvxDDZjG4O0BJ4vW43ubua0ZiUqaRn9GRKb1Ns"
+        "Ref": "GraphqlLambdaVersionFUM8SCcwqXS3B2yQXIO2P8XnGyxHrXN2ZYiRLQ8"
       },
       "Export": {
         "Name": "sls-apollo-lambda-dev-GraphqlLambdaFunctionQualifiedArn"
