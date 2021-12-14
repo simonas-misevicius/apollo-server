@@ -1,7 +1,15 @@
 const { SQLDataSource } = require("datasource-sql");
 class ServerlessDatabase extends SQLDataSource {
   getUppers() {
-    return this.knex.select("*").from("upper");
+    return this.knex
+      .select("*")
+      .from("upper AS upper")
+      .leftJoin("lower AS lower", "upper.id", "lower.upperkey")
+      .orderBy("upper.id")
+      .options({ nestTables: true })
+      .then((results) => {
+        return this.uppersReducer(results);
+      });
   }
   getLowers() {
     return this.knex.select("*").from("lower");
@@ -105,6 +113,33 @@ class ServerlessDatabase extends SQLDataSource {
         ...result[0].upper,
         lowers,
       };
+    }
+    return null;
+  }
+
+  uppersReducer(result) {
+    if (result.length > 0) {
+      var currentId = result[0].upper.id;
+      var formedResult = [];
+      formedResult.push({
+        ...result[0].upper,
+        lowers: [{ ...result[0].lower }],
+      });
+      var resultCounterIndex = 0;
+      for (var i = 1; i < result.length; i++) {
+        if (result[i].upper.id != currentId) {
+          currentId = result[i].upper.id;
+          formedResult.push({
+            ...result[i].upper,
+            lowers: [{ ...result[i].lower }],
+          });
+          resultCounterIndex++;
+        } else {
+          formedResult[resultCounterIndex].lowers.push(result[i].lower);
+        }
+      }
+      return formedResult;
+      //return { ...result[0].upper, lowers: [...results[0].lower] };
     }
     return null;
   }

@@ -6,12 +6,12 @@ const typeDefs = gql`
     lowers: [Lower]
   }
   type Lower {
-    id: ID!
+    id: ID
     namel: String
     upperkey: String
   }
   type Query {
-    uppers: [Upper]!
+    uppers: [Upper]
     upper(id: ID!): Upper
     lowers: [Lower]!
     lower(id: ID!): Lower

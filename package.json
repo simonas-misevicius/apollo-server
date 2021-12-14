@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-log": "^1.1.0",
     "apollo-server": "^3.5.0",
     "apollo-server-lambda": "^3.5.0",
     "datasource-sql": "^1.6.0",
